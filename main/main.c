@@ -6,12 +6,14 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/11/15 13:30:33 by rde-brui      #+#    #+#                 */
-/*   Updated: 2023/11/18 22:58:36 by rjw           ########   odam.nl         */
+/*   Updated: 2023/11/21 21:11:17 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-
+# define RED ""
+# define PURPLE "\033[1;35m"
+# define RESET "\033[0m"
 //	man 3 prinft
 //	cc -Wall -Wextra -Werror -g *.c ../ft_printf/Libft/*.c ../test/*.c ../ft_printf/*.c && ./a.out
 
@@ -70,6 +72,11 @@ int	main(void)
 // 	return (0);
 // }
 
+
+/**
+ * @brief printf the full width
+ * @param void
+*/
 void	print_full_width(void)
 {
 	struct winsize	w;
@@ -77,11 +84,12 @@ void	print_full_width(void)
 
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	i = 0;
+	printf(PURPLE);
 	while (i++ < w.ws_col)
-		// markup(" ", -1, 45, 0);
-		printf("\033[1;35m-\033[0m");
-	printf("\n");
+		printf("-");
+	printf(RESET "\n");
 }
+
 
 void	markup(char *str, ...)
 {
@@ -109,3 +117,5 @@ void	markup(char *str, ...)
 	}
 	va_end(style);
 }
+
+// markup("helloalex", 1, 2, 32, 36)

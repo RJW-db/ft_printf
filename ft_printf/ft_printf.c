@@ -6,7 +6,7 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/11/15 13:29:00 by rde-brui      #+#    #+#                 */
-/*   Updated: 2023/11/21 12:37:28 by rjw           ########   odam.nl         */
+/*   Updated: 2023/11/21 14:56:57 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_void_p(const char f, va_list arg)
 	}
 	if (f == 'p')
 	{
-		return (ft_putnbr_base(va_arg(arg, void *), "0123456789abcdef", 0));
+		return (ft_putnbr_base(va_arg(arg, unsigned long), "0123456789abcdef", 0));
 	}
 	return (0);
 }

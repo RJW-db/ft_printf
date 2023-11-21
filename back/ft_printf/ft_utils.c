@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   ft_utils.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/11/15 13:26:28 by rde-brui      #+#    #+#                 */
-/*   Updated: 2023/11/21 19:31:08 by rde-brui      ########   odam.nl         */
+/*   Created: 2023/11/15 14:42:32 by rde-brui      #+#    #+#                 */
+/*   Updated: 2023/11/15 17:30:17 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "ft_printf.h"
 
-# include "../ft_printf/ft_printf.h"
-# include "../test/test.h"
+int	ft_putnbr_base(int nbr, char *base, int i)
+{
+	int			base_len;
+	long int	nb;
 
-# include <stdio.h>
+	nb = nbr;
+	if (nb < 0)
+	{
+		nb = -nb;
+		ft_putchar_fd('-', 1);
+		i = 1;
+	}
+	base_len = (int)ft_strlen(base);
+	if (nb >= base_len)
+		i = ft_putnbr_base(nb / base_len, base, i);
+	return (i += (int)write(1, &base[nb % base_len], 1));
+}
 
-void	print_full_width(void);
-void	markup(char *str, ...);
-
-char	*itoa_stack(int n, char *str_num);
-
-#endif
+// void	ft_putchar_fd(char c, int fd)
+// {
+// 	write(fd, &c, 1);
+// }

@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.h                                             :+:    :+:            */
+/*   test.h                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/11/15 13:26:28 by rde-brui      #+#    #+#                 */
-/*   Updated: 2023/11/21 19:31:08 by rde-brui      ########   odam.nl         */
+/*   Created: 2023/11/15 13:31:25 by rde-brui      #+#    #+#                 */
+/*   Updated: 2023/11/17 13:00:14 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef TEST_H
+# define TEST_H
 
 # include "../ft_printf/ft_printf.h"
-# include "../test/test.h"
+# include "../main/main.h"
 
-# include <stdio.h>
-
-void	print_full_width(void);
-void	markup(char *str, ...);
-
-char	*itoa_stack(int n, char *str_num);
+void	test(void);
+void	integer(void);
+void	ft_str(void);
 
 #endif
