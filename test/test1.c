@@ -6,7 +6,7 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/11/15 13:33:57 by rde-brui      #+#    #+#                 */
-/*   Updated: 2023/11/23 12:33:18 by rjw           ########   odam.nl         */
+/*   Updated: 2023/11/23 17:09:13 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef enum specifier {
 	SMALL_X,
 	BIG_X
 }	t_specifier;
-
 
 void	tester(void *input, t_specifier data_type)
 {
@@ -48,9 +47,9 @@ void	tester(void *input, t_specifier data_type)
 	}
 	if (data_type == POINTER)
 	{
-		printf("og = %d\n", printf("pointer: %p\n", (char *)input));
+		printf("og = %d\n", printf("pointer: %p\n", -1));
 		markup("Custom printf", 32, 0);
-		printf("my = %d\n", ft_printf("pointer: %p\n", (char *)input));
+		printf("my = %d\n", ft_printf("pointer: %p\n", -1));
 	}
 	if (data_type == UNSIGNED_INT)
 	{
@@ -58,17 +57,23 @@ void	tester(void *input, t_specifier data_type)
 		markup("Custom printf", 32, 0);
 		printf("my = %d\n", ft_printf("u: %u\n", *(unsigned int *)input));
 	}
-	if (data_type == OCTAL)
+	// if (data_type == OCTAL)
+	// {
+	// 	printf("og = %d\n", printf("o: %o\n", *(unsigned int *)input));
+	// 	markup("Custom printf", 32, 0);
+	// 	printf("my = %d\n", ft_printf("o: %o\n", *(unsigned int *)input));
+	// }
+	if (data_type == SMALL_X)
 	{
-		printf("og = %d\n", printf("o: %o\n", *(unsigned int *)input));
+		printf("og = %d\n", printf("x: %x\n", *(unsigned int *)input));
 		markup("Custom printf", 32, 0);
-		printf("my = %d\n", ft_printf("o: %o\n", *(unsigned int *)input));
+		printf("my = %d\n", ft_printf("x: %x\n", *(unsigned int *)input));
 	}
 	if (data_type == BIG_X)
 	{
-		printf("og = %d\n", printf("o: %X\n", *(unsigned int *)input));
+		printf("og = %d\n", printf("X: %X\n", *(unsigned int *)input));
 		markup("Custom printf", 32, 0);
-		printf("my = %d\n", ft_printf("o: %X\n", *(unsigned int *)input));
+		printf("my = %d\n", ft_printf("X: %X\n", *(unsigned int *)input));
 	}
 }
 
@@ -107,6 +112,24 @@ void	unsigned_dec(void)
 	// printf("og = %u\n", ft_printf("number: %u\n", nbr));
 }
 
+void	small_x(void)
+{
+	// unsigned int	nbr = -2147483649;
+	// int	nbr = -21474836489;
+	// int	nbr = 2147483647;
+	// int	nbr = 4294967295;
+	// int	nbr = 0;
+	// unsigned int	nbr = 2147483647;
+	unsigned int	nbr = 177;
+
+	tester(&nbr, SMALL_X);
+	// markup("Original printf", 32, 0);
+	// printf("og = %d\n", printf("number: %x\n", nbr));
+
+	// markup("Custom printf", 32, 0);
+	// printf("og = %d\n", ft_printf("number: %x\n", nbr));
+}
+
 void	big_x(void)
 {
 	// unsigned int	nbr = -2147483649;
@@ -139,7 +162,8 @@ void	chr(void)
 
 void	str(void)
 {
-	char	*str = "a beautiful";
+	// char	*str = "a beautiful";
+	char	*str = "fefew\0";
 
 	tester(str, STRING);
 	// markup("Original printf", 32, 0);
@@ -160,32 +184,34 @@ void	void_ptr(void)
 	// markup("Custom printf", 32, 0);
 	// printf("my = %d\n", ft_printf("%p\n", str));
 }
-void	octal(void)
-{
-	// unsigned int	nbr = 23431124;
-	// unsigned int	nbr = 0;
-	unsigned int	nbr = -1;
+// void	octal(void)
+// {
+// 	// unsigned int	nbr = 23431124;
+// 	// unsigned int	nbr = 0;
+// 	unsigned int	nbr = -1;
 
-	tester(&nbr, OCTAL);
-}
-
+// 	tester(&nbr, OCTAL);
+// }
+#include <limits.h>
 void	test(void)
 {
 	print_full_width();
 	// integer();
 	// unsigned_dec();
-	// octal();
 	// unsigned_dec();
+	// small_x();
 	// big_x();
 	// chr();
 	// str();
 	// void_ptr();
-	
-	markup("Original printf", 32, 0);
-	printf("og = %d\n", printf("%%\n"));
 
-	markup("Custom printf", 32, 0);
-	printf("my = %d\n", ft_printf("%%\n"));
+	// octal();
+	// printf("%p\n", -2);
+	// markup("Original printf", 32, 0);
+	// printf("og = %d\n", printf("%%\n"));
+
+	// markup("Custom printf", 32, 0);
+	// printf("my = %d\n", ft_printf("%%\n"));
 }
 
 //	/** + enter

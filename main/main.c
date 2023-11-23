@@ -6,7 +6,7 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/11/15 13:30:33 by rde-brui      #+#    #+#                 */
-/*   Updated: 2023/11/21 21:47:58 by rjw           ########   odam.nl         */
+/*   Updated: 2023/11/23 14:44:24 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,4 @@ void	markup(char *str, ...)
 	va_end(style);
 }
 
-// markup("helloalex", 1, 2, 32, 36)
+

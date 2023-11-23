@@ -6,7 +6,7 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/11/15 13:29:00 by rde-brui      #+#    #+#                 */
-/*   Updated: 2023/11/23 12:37:28 by rjw           ########   odam.nl         */
+/*   Updated: 2023/11/23 16:45:35 by rde-brui      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	ft_void_p(const char f, va_list arg)
 		return (ft_putnbr_base_un(va_arg(arg, unsigned int), "0123456789", 0));
 	if (f == 'd' || f == 'i')
 		return (ft_putnbr_base(va_arg(arg, int), "0123456789", 0));
-	if (f == 'o')
-		return (ft_putnbr_base_un(va_arg(arg, unsigned int), "01234567", 0));
+	// if (f == 'o')
+	// 	return (ft_putnbr_base_un(va_arg(arg, unsigned int), "01234567", 0));
 	if (f == 'c')
 		return (write(1, &(int){va_arg(arg, int)}, 1));
 	if (f == 's')
@@ -44,7 +44,7 @@ int	ft_void_p(const char f, va_list arg)
 	}
 	if (f == 'p')
 	{
-		return (ft_putnbr_base(va_arg(arg, unsigned long), "0123456789abcdef", 0));
+		return (write(1, "0x", 2) + ft_putnbr_base(va_arg(arg, unsigned long), "0123456789abcdef", 0));
 	}
 	return (0);
 }
@@ -71,36 +71,29 @@ int	ft_arg(const char *fmt, va_list ap_arg)
 	}
 	if (fmt[i] == '%')
 	{
-		int i = write(STDOUT_FILENO, "%%", 1);
-		printf
-		// return (write(STDOUT_FILENO, "%%", 1));
-		return (0)l
+		return (write(STDOUT_FILENO, "%%", 1));
 	}
 	return (0);
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char *op, ...)
 {
 	va_list	ap;
 	int		i;
-	int		j;
 
 	i = 0;
-	j = 0;
-	va_start(ap, format);
-	while (format[i] != '\0')
+	va_start(ap, op);
+	while (*op != '\0')
 	{
-		if (format[i] == '%')
+		if (*op == '%')
 		{
-			i++;
-			j += ft_arg(&format[i], ap);
-			// printf("j = %d\n", j);
+			op++;
+			i += ft_arg(op, ap);
+
 		}
 		else
-			write(1, &format[i], 1);
-		i++;
+			i += write(1, op, 1);
+		op++;
 	}
-	if (j)
-		return (j + i);
-	return (0);
+	return (i);
 }
