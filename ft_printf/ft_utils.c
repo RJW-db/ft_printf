@@ -6,7 +6,7 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/11/15 14:42:32 by rde-brui      #+#    #+#                 */
-/*   Updated: 2023/11/21 17:02:38 by rde-brui      ########   odam.nl         */
+/*   Updated: 2023/11/23 12:30:15 by rjw           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ int	ft_putnbr_base(int nbr, char *base, int i)
 	return (i += (int)write(1, &base[nb % base_len], 1));
 }
 
-// int	ft_putnbr_base_un(unsigned int nbr, char *base, int i)
-// {
-// 	int					base_len;
-// 	unsigned long int	nb;
+int	ft_putnbr_base_un(unsigned int nbr, char *base, int i)
+{
+	unsigned int	base_len;
+	unsigned int	nb;
 
-// 	nb = nbr;
-// 	if (nb < 0)
-// 	{
-// 		nb = -nb;
-// 		ft_putchar_fd('-', 1);
-// 		i = 1;
-// 	}
-// 	base_len = ft_strlen(base);
-// 	if (nb >= base_len)
-// 		i = ft_putnbr_base(nb / base_len, base, i);
-// 	return (i += (int)write(1, &base[nb % base_len], 1));
-// }
+	nb = nbr;
+	if (nb < 0)
+	{
+		nb = -nb;
+		ft_putchar_fd('-', 1);
+		i = 1;
+	}
+	base_len = ft_strlen(base);
+	if (nb >= base_len)
+		i = ft_putnbr_base(nb / base_len, base, i);
+	return (i += (int)write(1, &base[nb % base_len], 1));
+}
 
 int	ft_putstr_count(char *s)
 {

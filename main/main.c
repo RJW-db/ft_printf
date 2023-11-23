@@ -6,14 +6,15 @@
 /*   By: rde-brui <rde-brui@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/11/15 13:30:33 by rde-brui      #+#    #+#                 */
-/*   Updated: 2023/11/21 21:11:17 by rde-brui      ########   odam.nl         */
+/*   Updated: 2023/11/21 21:47:58 by rjw           ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 # define RED ""
-# define PURPLE "\033[1;35m"
+# define BOLD_PURPLE "\033[1;35m"
 # define RESET "\033[0m"
+
 //	man 3 prinft
 //	cc -Wall -Wextra -Werror -g *.c ../ft_printf/Libft/*.c ../test/*.c ../ft_printf/*.c && ./a.out
 
@@ -84,7 +85,7 @@ void	print_full_width(void)
 
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
 	i = 0;
-	printf(PURPLE);
+	printf(BOLD_PURPLE);
 	while (i++ < w.ws_col)
 		printf("-");
 	printf(RESET "\n");
